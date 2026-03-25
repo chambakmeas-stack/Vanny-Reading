@@ -1,0 +1,1348 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unit 1 – Single-Letter Sounds: Aa • Bb • Cc</title>
+    <!-- Using Mali font which is extremely clean, unslanted, and perfect for early handwriting education -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mali:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --orange: #ff7a00;
+        --yellow: #ffd600;
+        --green: #4caf50;
+        --blue: #2196f3;
+        --pink: #ff4081;
+        --purple: #9c27b0;
+        --red: #f44336;
+        --bg: #fff8e7;
+        --card: #ffffff;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Mali", cursive;
+        background: var(--bg);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      /* ── STARS BACKGROUND ── */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        background-image:
+          radial-gradient(circle at 10% 20%, #ffd60022 0, transparent 200px),
+          radial-gradient(circle at 85% 10%, #ff7a0022 0, transparent 180px),
+          radial-gradient(circle at 50% 80%, #4caf5022 0, transparent 200px);
+        pointer-events: none;
+      }
+
+      /* ── HEADER ── */
+      header {
+        background: linear-gradient(135deg, #ff7a00 0%, #ffd600 100%);
+        padding: 20px 30px 28px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 6px 24px #ff7a0055;
+      }
+      header::after {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        right: 0;
+        height: 28px;
+        background: var(--bg);
+        clip-path: ellipse(55% 100% at 50% 100%);
+      }
+      .header-inner {
+        max-width: 900px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+      .unit-badge {
+        background: #fff;
+        color: var(--orange);
+        font-family: "Mali", cursive;
+        font-size: 14px;
+        line-height: 1;
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 12px #0003;
+        flex-shrink: 0;
+      }
+      .unit-badge span:first-child {
+        font-size: 12px;
+        font-weight: 700;
+      }
+      .unit-badge span:last-child {
+        font-size: 28px;
+        font-weight: 700;
+      }
+      .header-title h1 {
+        font-family: "Mali", cursive;
+        font-weight: 700;
+        font-size: clamp(22px, 4vw, 36px);
+        color: #fff;
+        text-shadow: 2px 3px 0 #c44d00;
+        letter-spacing: 1px;
+      }
+      .header-title p {
+        font-size: 15px;
+        color: #fff9;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-top: 2px;
+      }
+      .abc-big {
+        margin-left: auto;
+        font-family: "Mali", cursive;
+        font-weight: 700;
+        font-size: clamp(28px, 5vw, 48px);
+        display: flex;
+        gap: 10px;
+      }
+      .abc-big span:nth-child(1) {
+        color: #fff;
+        text-shadow: 3px 3px 0 #c44d00;
+      }
+      .abc-big span:nth-child(2) {
+        color: #fff;
+        text-shadow: 3px 3px 0 #1a6e1a;
+      }
+      .abc-big span:nth-child(3) {
+        color: #fff;
+        text-shadow: 3px 3px 0 #1565c0;
+      }
+
+      /* ── NAV TABS ── */
+      .nav {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        padding: 24px 16px 8px;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 1;
+      }
+      .tab {
+        font-family: "Mali", cursive;
+        font-weight: 700;
+        font-size: 16px;
+        padding: 10px 22px;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.2s;
+        box-shadow: 0 4px 0 #0002;
+        outline: none;
+      }
+      .tab:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 0 #0002;
+      }
+      .tab.active {
+        transform: translateY(2px);
+        box-shadow: 0 2px 0 #0002;
+      }
+      .tab-1 {
+        background: #ff7a00;
+        color: #fff;
+      }
+      .tab-2 {
+        background: #4caf50;
+        color: #fff;
+      }
+      .tab-3 {
+        background: #2196f3;
+        color: #fff;
+      }
+      .tab-4 {
+        background: #ff4081;
+        color: #fff;
+      }
+      .tab-5 {
+        background: #9c27b0;
+        color: #fff;
+      }
+
+      /* ── SECTION ── */
+      .section {
+        display: none;
+        animation: fadeUp 0.4s ease;
+      }
+      .section.active {
+        display: block;
+      }
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px 16px 60px;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* ── SECTION TITLE ── */
+      .sec-title {
+        font-family: "Mali", cursive;
+        font-weight: 700;
+        font-size: 26px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: linear-gradient(135deg, var(--orange), var(--yellow));
+        color: #fff;
+        padding: 8px 24px;
+        border-radius: 50px;
+        box-shadow: 0 4px 12px #ff7a0033;
+        margin-bottom: 24px;
+        text-shadow: 1px 2px 0 #0003;
+      }
+
+      /* ── AUDIO CLICK EFFECTS ── */
+      .clickable-audio {
+        cursor: pointer;
+        position: relative;
+      }
+      .clickable-audio:hover::after {
+        content: "🔊";
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 20px;
+        animation: bounce 1s infinite;
+      }
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-5px);
+        }
+      }
+      .speaker-icon {
+        display: inline-block;
+        font-size: 0.8em;
+        opacity: 0.6;
+        margin-left: 8px;
+        transition: opacity 0.2s;
+      }
+      .clickable-audio:hover .speaker-icon {
+        opacity: 1;
+      }
+      .chant-line {
+        cursor: pointer;
+        padding: 4px 10px;
+        border-radius: 8px;
+        transition: background 0.2s;
+      }
+      .chant-line:hover {
+        background: rgba(0, 0, 0, 0.05);
+      }
+
+      /* ── LETTER CARDS (Letters & Sounds) ── */
+      .letter-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+      }
+      .letter-card {
+        background: var(--card);
+        border-radius: 24px;
+        padding: 28px 20px 20px;
+        text-align: center;
+        box-shadow:
+          0 8px 24px #0001,
+          0 2px 6px #0001;
+        border: 3px solid transparent;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        overflow: hidden;
+      }
+      .letter-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 40px #0002;
+      }
+      .letter-card.a {
+        border-color: #ff7a00;
+      }
+      .letter-card.b {
+        border-color: #4caf50;
+      }
+      .letter-card.c {
+        border-color: #2196f3;
+      }
+      .letter-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 8px;
+        border-radius: 24px 24px 0 0;
+      }
+      .letter-card.a::before {
+        background: #ff7a00;
+      }
+      .letter-card.b::before {
+        background: #4caf50;
+      }
+      .letter-card.c::before {
+        background: #2196f3;
+      }
+      .big-letter {
+        font-family: "Mali", cursive;
+        font-weight: 700;
+        font-size: 100px;
+        line-height: 1;
+        margin-bottom: 6px;
+      }
+      .letter-card.a .big-letter {
+        color: #ff7a00;
+      }
+      .letter-card.b .big-letter {
+        color: #4caf50;
+      }
+      .letter-card.c .big-letter {
+        color: #2196f3;
+      }
+      .letter-animal {
+        font-size: 56px;
+        margin-bottom: 6px;
+      }
+      .letter-name {
+        font-family: "Mali", cursive;
+        font-size: 22px;
+        color: #555;
+      }
+
+      /* ── WORD CARDS ── */
+      .word-section {
+        margin-bottom: 32px;
+      }
+      .word-section-title {
+        font-family: "Mali", cursive;
+        font-weight: 700;
+        font-size: 22px;
+        margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .word-section-title .letter-badge {
+        width: 44px;
+        height: 44px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        color: #fff;
+        box-shadow: 0 4px 8px #0002;
+      }
+      .badge-a {
+        background: #ff7a00;
+      }
+      .badge-b {
+        background: #4caf50;
+      }
+      .badge-c {
+        background: #2196f3;
+      }
+
+      .words-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 14px;
+      }
+      .word-card {
+        background: #fff;
+        border-radius: 18px;
+        padding: 18px 12px 14px;
+        text-align: center;
+        box-shadow: 0 4px 16px #0001;
+        transition: transform 0.2s;
+        border: 2px solid transparent;
+      }
+      .word-card:hover {
+        transform: scale(1.05);
+      }
+      .word-card .emoji {
+        font-size: 44px;
+      }
+      .word-card .word {
+        font-family: "Mali", cursive;
+        font-weight: 700;
+        font-size: 22px;
+        margin-top: 8px;
+      }
+      .word-card .first {
+        font-size: 28px;
+      }
+      .wc-a {
+        border-color: #ff7a0055;
+      }
+      .wc-a .word {
+        color: #ff7a00;
+      }
+      .wc-b {
+        border-color: #4caf5055;
+      }
+      .wc-b .word {
+        color: #4caf50;
+      }
+      .wc-c {
+        border-color: #2196f355;
+      }
+      .wc-c .word {
+        color: #2196f3;
+      }
+
+      /* ── MATCH ACTIVITY ── */
+      .match-container {
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .match-col {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .match-item {
+        background: #fff;
+        border-radius: 18px;
+        padding: 16px 24px;
+        font-family: "Mali", cursive;
+        font-weight: 700;
+        font-size: 32px;
+        text-align: center;
+        box-shadow: 0 4px 14px #0001;
+        cursor: pointer;
+        border: 3px solid transparent;
+        transition: all 0.2s;
+        min-width: 120px;
+      }
+      .match-item:hover {
+        transform: scale(1.05);
+      }
+      .match-item.selected {
+        border-color: var(--orange);
+        background: #fff3e0;
+      }
+      .match-item.correct {
+        border-color: var(--green);
+        background: #e8f5e9;
+      }
+      .match-item.wrong {
+        border-color: var(--red);
+        background: #ffebee;
+        animation: shake 0.3s;
+      }
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        25% {
+          transform: translateX(-8px);
+        }
+        75% {
+          transform: translateX(8px);
+        }
+      }
+      .match-pic {
+        font-size: 56px;
+      }
+      .match-instructions {
+        background: linear-gradient(135deg, #e3f2fd, #fff8e1);
+        border-radius: 16px;
+        padding: 14px 20px;
+        font-size: 16px;
+        color: #555;
+        font-weight: 700;
+        margin-bottom: 20px;
+        border-left: 4px solid var(--blue);
+      }
+      .match-score {
+        text-align: center;
+        font-family: "Mali", cursive;
+        font-weight: 700;
+        font-size: 22px;
+        color: var(--green);
+        margin-top: 20px;
+        min-height: 36px;
+      }
+
+      /* ── STORY ── */
+      .story-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+      .story-card {
+        background: #fff;
+        border-radius: 20px;
+        padding: 20px;
+        box-shadow: 0 6px 20px #0001;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+      }
+      .story-emoji {
+        font-size: 72px;
+      }
+      .story-text {
+        font-family: "Mali", cursive;
+        font-size: 24px;
+        font-weight: 600;
+        color: #333;
+        text-align: center;
+      }
+      .story-card:nth-child(1) {
+        border-top: 6px solid #4caf50;
+      }
+      .story-card:nth-child(2) {
+        border-top: 6px solid #ff4081;
+      }
+      .story-card:nth-child(3) {
+        border-top: 6px solid #ff7a00;
+      }
+      .story-card:nth-child(4) {
+        border-top: 6px solid #f44336;
+      }
+      .sight-words {
+        background: linear-gradient(135deg, #fff9c4, #fff3e0);
+        border-radius: 16px;
+        padding: 14px 20px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        border: 2px dashed var(--yellow);
+      }
+      .sight-words span {
+        font-family: "Mali", cursive;
+        font-weight: 700;
+        font-size: 20px;
+        color: #ff7a00;
+      }
+      .sight-word-item {
+        background: var(--orange);
+        color: #fff;
+        font-family: "Mali", cursive;
+        font-weight: 700;
+        padding: 6px 18px;
+        border-radius: 50px;
+        font-size: 20px;
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
+      .sight-word-item:hover {
+        transform: scale(1.1);
+      }
+
+      /* ── CHANT ── */
+      .chant-box {
+        background: linear-gradient(135deg, #fff9c4 0%, #e8f5e9 100%);
+        border-radius: 24px;
+        padding: 28px;
+        box-shadow: 0 8px 28px #0001;
+        border: 3px dashed #ffd600;
+      }
+      .chant-part {
+        margin-bottom: 24px;
+      }
+      .chant-label {
+        font-family: "Mali", cursive;
+        font-weight: 700;
+        font-size: 26px;
+        margin-bottom: 10px;
+      }
+      .chant-label.a {
+        color: #ff7a00;
+      }
+      .chant-label.bc {
+        color: #4caf50;
+      }
+      .chant-line {
+        font-size: 20px;
+        color: #333;
+        line-height: 2;
+        font-weight: 600;
+      }
+      .chant-line strong {
+        font-size: 22px;
+        font-weight: 700;
+      }
+      .chant-line strong.a {
+        color: #ff7a00;
+      }
+      .chant-line strong.b {
+        color: #4caf50;
+      }
+      .chant-line strong.c {
+        color: #2196f3;
+      }
+      .chant-image {
+        text-align: center;
+        font-size: 80px;
+        margin-bottom: 16px;
+      }
+
+      /* ── FOOTER ── */
+      footer {
+        text-align: center;
+        padding: 20px;
+        font-size: 14px;
+        color: #aaa;
+        font-weight: 700;
+      }
+
+      /* ── FLOATING DECORATIONS ── */
+      .deco {
+        position: fixed;
+        font-size: 32px;
+        opacity: 0.12;
+        pointer-events: none;
+        animation: float 6s ease-in-out infinite;
+        z-index: 0;
+      }
+      .deco:nth-child(2) {
+        top: 15%;
+        left: 3%;
+        animation-delay: 0s;
+      }
+      .deco:nth-child(3) {
+        top: 40%;
+        right: 2%;
+        animation-delay: 1s;
+      }
+      .deco:nth-child(4) {
+        bottom: 20%;
+        left: 5%;
+        animation-delay: 2s;
+      }
+      .deco:nth-child(5) {
+        top: 70%;
+        right: 4%;
+        animation-delay: 3s;
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-18px) rotate(8deg);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .story-grid {
+          grid-template-columns: 1fr;
+        }
+        .match-container {
+          flex-direction: column;
+          align-items: center;
+        }
+        .abc-big {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Floating decorations -->
+    <div class="deco">⭐</div>
+    <div class="deco">🎵</div>
+    <div class="deco">📚</div>
+    <div class="deco">✏️</div>
+
+    <!-- HEADER -->
+    <header>
+      <div class="header-inner">
+        <div class="unit-badge">
+          <span>Unit</span>
+          <span>1</span>
+        </div>
+        <div class="header-title">
+          <h1>Single-Letter Sounds</h1>
+          <p>Letters & Phonics • Beginner</p>
+        </div>
+        <div class="abc-big">
+          <span>Aa</span>
+          <span>Bb</span>
+          <span>Cc</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- NAV -->
+    <div class="nav">
+      <button class="tab tab-1 active" onclick="showTab(0)">🔤 Letters</button>
+      <button class="tab tab-2" onclick="showTab(1)">📖 New Words</button>
+      <button class="tab tab-3" onclick="showTab(2)">🎯 Match Game</button>
+      <button class="tab tab-4" onclick="showTab(3)">📖 Story</button>
+      <button class="tab tab-5" onclick="showTab(4)">🎵 Chant</button>
+    </div>
+
+    <!-- ════ SECTION 1: LETTERS ════ -->
+    <section class="section active" id="s0">
+      <div class="container">
+        <div class="sec-title">
+          🔤 New Letters and Sounds <span class="speaker-icon">🔊</span>
+        </div>
+        <div class="letter-grid">
+          <div
+            class="letter-card a clickable-audio"
+            onclick="playSound('A, is for, Ant')"
+          >
+            <div class="letter-animal">🐜</div>
+            <div class="big-letter">Aa</div>
+            <div class="letter-name">A is for <strong>Ant</strong></div>
+          </div>
+          <div
+            class="letter-card b clickable-audio"
+            onclick="playSound('B, is for, Bear')"
+          >
+            <div class="letter-animal">🐻</div>
+            <div class="big-letter">Bb</div>
+            <div class="letter-name">B is for <strong>Bear</strong></div>
+          </div>
+          <div
+            class="letter-card c clickable-audio"
+            onclick="playSound('C, is for, Cat')"
+          >
+            <div class="letter-animal">🐱</div>
+            <div class="big-letter">Cc</div>
+            <div class="letter-name">C is for <strong>Cat</strong></div>
+          </div>
+        </div>
+
+        <!-- Tracing reminder -->
+        <div
+          style="
+            margin-top: 28px;
+            background: #fff;
+            border-radius: 20px;
+            padding: 22px 24px;
+            box-shadow: 0 4px 16px #0001;
+            border-left: 6px solid #ffd600;
+          "
+        >
+          <div
+            style="
+              font-family: &quot;Mali&quot;, cursive;
+              font-weight: 700;
+              font-size: 22px;
+              color: #ff7a00;
+              margin-bottom: 12px;
+            "
+          >
+            ✏️ How to Write
+          </div>
+          <div
+            style="
+              display: flex;
+              gap: 20px;
+              flex-wrap: wrap;
+              justify-content: center;
+            "
+          >
+            <div style="text-align: center">
+              <div
+                style="
+                  font-family: &quot;Mali&quot;, cursive;
+                  font-weight: 700;
+                  font-size: 60px;
+                  color: #ff7a00;
+                  line-height: 1;
+                "
+              >
+                A a
+              </div>
+              <div
+                style="
+                  font-size: 14px;
+                  color: #999;
+                  font-weight: 700;
+                  margin-top: 8px;
+                "
+              >
+                Uppercase & Lowercase
+              </div>
+            </div>
+            <div style="text-align: center">
+              <div
+                style="
+                  font-family: &quot;Mali&quot;, cursive;
+                  font-weight: 700;
+                  font-size: 60px;
+                  color: #4caf50;
+                  line-height: 1;
+                "
+              >
+                B b
+              </div>
+              <div
+                style="
+                  font-size: 14px;
+                  color: #999;
+                  font-weight: 700;
+                  margin-top: 8px;
+                "
+              >
+                Uppercase & Lowercase
+              </div>
+            </div>
+            <div style="text-align: center">
+              <div
+                style="
+                  font-family: &quot;Mali&quot;, cursive;
+                  font-weight: 700;
+                  font-size: 60px;
+                  color: #2196f3;
+                  line-height: 1;
+                "
+              >
+                C c
+              </div>
+              <div
+                style="
+                  font-size: 14px;
+                  color: #999;
+                  font-weight: 700;
+                  margin-top: 8px;
+                "
+              >
+                Uppercase & Lowercase
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════ SECTION 2: NEW WORDS ════ -->
+    <section class="section" id="s1">
+      <div class="container">
+        <div class="sec-title">
+          📖 New Words <span class="speaker-icon">🔊</span>
+        </div>
+
+        <!-- A words -->
+        <div class="word-section">
+          <div class="word-section-title">
+            <div class="letter-badge badge-a">Aa</div>
+            Words starting with <span style="color: #ff7a00">A</span>
+          </div>
+          <div class="words-grid">
+            <div
+              class="word-card wc-a clickable-audio"
+              onclick="playSound('ant')"
+            >
+              <div class="emoji">🐜</div>
+              <div class="word">
+                <span class="first" style="color: #ff7a00">a</span>nt
+              </div>
+            </div>
+            <div
+              class="word-card wc-a clickable-audio"
+              onclick="playSound('apple')"
+            >
+              <div class="emoji">🍎</div>
+              <div class="word">
+                <span class="first" style="color: #ff7a00">a</span>pple
+              </div>
+            </div>
+            <div
+              class="word-card wc-a clickable-audio"
+              onclick="playSound('angry')"
+            >
+              <div class="emoji">😠</div>
+              <div class="word">
+                <span class="first" style="color: #ff7a00">a</span>ngry
+              </div>
+            </div>
+            <div
+              class="word-card wc-a clickable-audio"
+              onclick="playSound('alligator')"
+            >
+              <div class="emoji">🐊</div>
+              <div class="word">
+                <span class="first" style="color: #ff7a00">a</span>lligator
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- B words -->
+        <div class="word-section">
+          <div class="word-section-title">
+            <div class="letter-badge badge-b">Bb</div>
+            Words starting with <span style="color: #4caf50">B</span>
+          </div>
+          <div class="words-grid">
+            <div
+              class="word-card wc-b clickable-audio"
+              onclick="playSound('bear')"
+            >
+              <div class="emoji">🐻</div>
+              <div class="word">
+                <span class="first" style="color: #4caf50">b</span>ear
+              </div>
+            </div>
+            <div
+              class="word-card wc-b clickable-audio"
+              onclick="playSound('baby')"
+            >
+              <div class="emoji">👶</div>
+              <div class="word">
+                <span class="first" style="color: #4caf50">b</span>aby
+              </div>
+            </div>
+            <div
+              class="word-card wc-b clickable-audio"
+              onclick="playSound('book')"
+            >
+              <div class="emoji">📗</div>
+              <div class="word">
+                <span class="first" style="color: #4caf50">b</span>ook
+              </div>
+            </div>
+            <div
+              class="word-card wc-b clickable-audio"
+              onclick="playSound('bird')"
+            >
+              <div class="emoji">🐦</div>
+              <div class="word">
+                <span class="first" style="color: #4caf50">b</span>ird
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- C words -->
+        <div class="word-section">
+          <div class="word-section-title">
+            <div class="letter-badge badge-c">Cc</div>
+            Words starting with <span style="color: #2196f3">C</span>
+          </div>
+          <div class="words-grid">
+            <div
+              class="word-card wc-c clickable-audio"
+              onclick="playSound('cat')"
+            >
+              <div class="emoji">🐱</div>
+              <div class="word">
+                <span class="first" style="color: #2196f3">c</span>at
+              </div>
+            </div>
+            <div
+              class="word-card wc-c clickable-audio"
+              onclick="playSound('cup')"
+            >
+              <div class="emoji">☕</div>
+              <div class="word">
+                <span class="first" style="color: #2196f3">c</span>up
+              </div>
+            </div>
+            <div
+              class="word-card wc-c clickable-audio"
+              onclick="playSound('cut')"
+            >
+              <div class="emoji">✂️</div>
+              <div class="word">
+                <span class="first" style="color: #2196f3">c</span>ut
+              </div>
+            </div>
+            <div
+              class="word-card wc-c clickable-audio"
+              onclick="playSound('cookie')"
+            >
+              <div class="emoji">🍪</div>
+              <div class="word">
+                <span class="first" style="color: #2196f3">c</span>ookie
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════ SECTION 3: MATCH GAME ════ -->
+    <section class="section" id="s2">
+      <div class="container">
+        <div class="sec-title">🎯 Match the Letters!</div>
+        <div class="match-instructions">
+          👆 Click a <strong>letter</strong> on the left, then click the
+          matching <strong>picture</strong> on the right!
+        </div>
+        <div class="match-container">
+          <div class="match-col" id="letters-col">
+            <div
+              class="match-item"
+              data-letter="a"
+              onclick="
+                selectLetter(this);
+                playSound('A');
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Mali&quot;, cursive;
+                  font-weight: 700;
+                  font-size: 42px;
+                  color: #ff7a00;
+                "
+              >
+                Aa
+              </div>
+            </div>
+            <div
+              class="match-item"
+              data-letter="b"
+              onclick="
+                selectLetter(this);
+                playSound('B');
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Mali&quot;, cursive;
+                  font-weight: 700;
+                  font-size: 42px;
+                  color: #4caf50;
+                "
+              >
+                Bb
+              </div>
+            </div>
+            <div
+              class="match-item"
+              data-letter="c"
+              onclick="
+                selectLetter(this);
+                playSound('C');
+              "
+            >
+              <div
+                style="
+                  font-family: &quot;Mali&quot;, cursive;
+                  font-weight: 700;
+                  font-size: 42px;
+                  color: #2196f3;
+                "
+              >
+                Cc
+              </div>
+            </div>
+          </div>
+          <div class="match-col" id="pics-col">
+            <div
+              class="match-item match-pic"
+              data-answer="b"
+              onclick="selectPic(this)"
+            >
+              🐻
+            </div>
+            <div
+              class="match-item match-pic"
+              data-answer="c"
+              onclick="selectPic(this)"
+            >
+              🐱
+            </div>
+            <div
+              class="match-item match-pic"
+              data-answer="a"
+              onclick="selectPic(this)"
+            >
+              🐜
+            </div>
+          </div>
+        </div>
+        <div class="match-score" id="match-score"></div>
+        <div style="text-align: center; margin-top: 16px">
+          <button
+            onclick="resetMatch()"
+            style="
+              font-family: &quot;Mali&quot;, cursive;
+              font-weight: 700;
+              font-size: 20px;
+              background: #ff7a00;
+              color: #fff;
+              border: none;
+              padding: 12px 30px;
+              border-radius: 50px;
+              cursor: pointer;
+              box-shadow: 0 4px 0 #c44d00;
+            "
+          >
+            🔄 Play Again
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════ SECTION 4: STORY ════ -->
+    <section class="section" id="s3">
+      <div class="container">
+        <div class="sec-title">
+          📖 Story Time! <span class="speaker-icon">🔊</span>
+        </div>
+        <div class="sight-words">
+          <span>👁 Sight Words:</span>
+          <div class="sight-word-item" onclick="playSound('a')">a</div>
+          <div class="sight-word-item" onclick="playSound('and')">and</div>
+          <div class="sight-word-item" onclick="playSound('no')">no</div>
+          <div class="sight-word-item" onclick="playSound('an')">an</div>
+        </div>
+        <div class="story-grid">
+          <div
+            class="story-card clickable-audio"
+            onclick="playSound('A cookie.')"
+          >
+            <div class="story-emoji">🍪</div>
+            <div class="story-text">A cookie.</div>
+          </div>
+          <div
+            class="story-card clickable-audio"
+            onclick="playSound('A cookie and a baby.')"
+          >
+            <div class="story-emoji">🍪👶</div>
+            <div class="story-text">A cookie and a baby.</div>
+          </div>
+          <div
+            class="story-card clickable-audio"
+            onclick="playSound('A baby and no cookie.')"
+          >
+            <div class="story-emoji">👶😢</div>
+            <div class="story-text">
+              A baby and <strong style="color: #f44336">no</strong> cookie.
+            </div>
+          </div>
+          <div
+            class="story-card clickable-audio"
+            onclick="playSound('An angry baby!')"
+          >
+            <div class="story-emoji">😠👶</div>
+            <div class="story-text">
+              An <strong style="color: #f44336">angry</strong> baby!
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════ SECTION 5: CHANT ════ -->
+    <section class="section" id="s4">
+      <div class="container">
+        <div class="sec-title">
+          🎵 Rhyming Chant <span class="speaker-icon">🔊</span>
+        </div>
+        <div class="chant-box">
+          <div class="chant-image">🐜🍎🐊</div>
+          <div class="chant-part">
+            <div class="chant-label a">🅰 — Letter A</div>
+            <div
+              class="chant-line"
+              onclick="playSound('Ant has an apple, apple, apple.')"
+            >
+              <strong class="a">Ant</strong> has an
+              <strong class="a">apple</strong>,
+              <strong class="a">apple</strong>,
+              <strong class="a">apple</strong>.
+              <span class="speaker-icon">🔊</span>
+            </div>
+            <div
+              class="chant-line"
+              onclick="playSound('Ant has an apple for her lunch.')"
+            >
+              <strong class="a">Ant</strong> has an
+              <strong class="a">apple</strong> for her lunch.
+              <span class="speaker-icon">🔊</span>
+            </div>
+            <div
+              class="chant-line"
+              onclick="playSound('Here comes Alligator! Munch! Munch! Munch!')"
+            >
+              Here comes <strong class="a">Alligator</strong>! Munch! Munch!
+              Munch! <span class="speaker-icon">🔊</span>
+            </div>
+            <div
+              class="chant-line"
+              onclick="playSound('No more apple for lunch!!')"
+            >
+              No more <strong class="a">apple</strong> for lunch!!
+              <span class="speaker-icon">🔊</span>
+            </div>
+          </div>
+          <hr
+            style="border: none; border-top: 2px dashed #ffd600; margin: 20px 0"
+          />
+          <div class="chant-image">👶🐦🍪✂️</div>
+          <div class="chant-part">
+            <div class="chant-label bc">🅱 🅲 — Letters B & C</div>
+            <div
+              class="chant-line"
+              onclick="playSound('Baby Bird! Do you want a cookie?')"
+            >
+              <strong class="b">Baby Bird</strong>! Do you want a
+              <strong class="c">cookie</strong>?
+              <span class="speaker-icon">🔊</span>
+            </div>
+            <div
+              class="chant-line"
+              onclick="playSound('Baby Bird! Do you want a cookie?')"
+            >
+              <strong class="b">Baby Bird</strong>! Do you want a
+              <strong class="c">cookie</strong>?
+              <span class="speaker-icon">🔊</span>
+            </div>
+            <div
+              class="chant-line"
+              onclick="playSound('Cut the cookie! Cut the cookie!')"
+            >
+              <strong class="c">Cut</strong> the
+              <strong class="c">cookie</strong>!
+              <strong class="c">Cut</strong> the
+              <strong class="c">cookie</strong>!
+              <span class="speaker-icon">🔊</span>
+            </div>
+            <div
+              class="chant-line"
+              onclick="playSound('Give it to the baby bird!')"
+            >
+              Give it to the <strong class="b">baby bird</strong>!
+              <span class="speaker-icon">🔊</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>Unit 1 · Single-Letter Sounds · Aa · Bb · Cc</footer>
+
+    <script>
+      // ── TEXT TO SPEECH FUNCTION ──
+      function playSound(text) {
+        if ("speechSynthesis" in window) {
+          window.speechSynthesis.cancel(); // Stop currently playing sound
+          const msg = new SpeechSynthesisUtterance(text);
+          msg.lang = "en-US"; // Set to US English
+          msg.rate = 0.85; // Play slightly slower for children
+          msg.pitch = 1.1; // Slightly higher pitch
+          window.speechSynthesis.speak(msg);
+        } else {
+          console.log("Text-to-speech not supported in this browser.");
+        }
+      }
+
+      // ── TAB NAVIGATION ──
+      const tabs = document.querySelectorAll(".tab");
+      const sections = document.querySelectorAll(".section");
+
+      function showTab(i) {
+        tabs.forEach((t, idx) => t.classList.toggle("active", idx === i));
+        sections.forEach((s, idx) => s.classList.toggle("active", idx === i));
+        window.speechSynthesis.cancel(); // Stop audio when switching tabs
+      }
+
+      // ── MATCH GAME ──
+      let selectedLetter = null;
+      let matched = 0;
+
+      function selectLetter(el) {
+        if (el.classList.contains("correct")) return;
+        document
+          .querySelectorAll("#letters-col .match-item")
+          .forEach((e) => e.classList.remove("selected"));
+        el.classList.add("selected");
+        selectedLetter = el.dataset.letter;
+      }
+
+      function selectPic(el) {
+        if (!selectedLetter) return;
+        if (el.classList.contains("correct")) return;
+
+        // Play the word sound based on picture clicked
+        let wordSound = "";
+        if (el.dataset.answer === "a") wordSound = "ant";
+        if (el.dataset.answer === "b") wordSound = "bear";
+        if (el.dataset.answer === "c") wordSound = "cat";
+
+        if (el.dataset.answer === selectedLetter) {
+          playSound("Correct! " + wordSound);
+          el.classList.add("correct");
+          const ltr = document.querySelector(
+            `#letters-col [data-letter="${selectedLetter}"]`,
+          );
+          ltr.classList.remove("selected");
+          ltr.classList.add("correct");
+          matched++;
+          selectedLetter = null;
+          if (matched === 3) {
+            setTimeout(() => {
+              playSound("Great job! You matched them all!");
+            }, 1500);
+            document.getElementById("match-score").textContent =
+              "🎉 Great job! You matched them all!";
+          }
+        } else {
+          playSound("Oops! Try again.");
+          el.classList.add("wrong");
+          setTimeout(() => el.classList.remove("wrong"), 400);
+          document
+            .querySelectorAll("#letters-col .match-item")
+            .forEach((e) => e.classList.remove("selected"));
+          selectedLetter = null;
+        }
+      }
+
+      function resetMatch() {
+        matched = 0;
+        selectedLetter = null;
+        document.querySelectorAll(".match-item").forEach((e) => {
+          e.classList.remove("correct", "wrong", "selected");
+        });
+        document.getElementById("match-score").textContent = "";
+      }
+    </script>
+  </body>
+</html>
